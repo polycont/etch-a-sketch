@@ -30,13 +30,12 @@ body {
 }
 
 .grid-container {
-    display: inline-grid;
+    display: grid;
     height: 700px;
     width: 700px;
-    grid-template: repeat(50, 100px);
     border: 2px solid black;
-    grid-template-rows: repeat(16, 1vh);
-    grid-template-columns: repeat(16, 1vh);
+    grid-template-rows: repeat(16, 6.25%);
+    grid-template-columns: repeat(16, 6.25%);
     margin: auto 5% auto 5%;
 }
 
