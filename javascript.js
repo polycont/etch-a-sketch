@@ -26,13 +26,7 @@ What is this formula? For grid-template-rows and grid-template-columns relations
 
 */
 
-
-
-// Div storage array.
-let divs = [];
-
 createDiv();
-docFragPush();
 drawing();
 
 // TODO: Clear 'divs' array every time button is hit
@@ -52,7 +46,6 @@ resize.addEventListener('click', () => {
     }
     gridRepeat();
     createDiv();
-    docFragPush();
     drawing();
     clearCanvas();
 });
@@ -60,23 +53,13 @@ resize.addEventListener('click', () => {
 console.log(gridSize); // Find out why this returns undefined in addition to number.
 
 // Creates a number of divs equal to user's input.
-// Send those divs to 'divs' array.
+// Append to gridBox.
 function createDiv() {
-    for (var i = 0; i < (gridSize * gridSize - 1); ++i) {
-        let div = document.createElement('div');
-        divs.push(div);
+    for(let i = 0; i < gridSize * gridSize; i++){
+        let div = document.createElement('div')
+        gridBox.appendChild(div)
     }
-}
-
-// Pull div elements from 'divs' array and append them to the docFrag.
-// Append the docFrag to the gridBox.
-function docFragPush(){
-    let docFrag = document.createDocumentFragment();
-    for (let i = 0; i < divs.length; ++i) {
-        docFrag.appendChild(divs[i]);
     }
-    gridBox.appendChild(docFrag);
-}
 
 // Function to add drawing functionality to the grid.
 function drawing() {
@@ -96,7 +79,6 @@ function gridRepeat() {
 
 // Clear divs.
 function clearDivs() {
-    divs.length = 0;
     while (gridBox.hasChildNodes()) {
         gridBox.removeChild(gridBox.firstChild);
     }
