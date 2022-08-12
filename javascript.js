@@ -1,7 +1,3 @@
-// I need to create a grid that can expand and shrink
-// based on the user's input. When the user mouses over the grid,
-// a color should be applied to any divs they mouse over.
-
 const gridBox = document.querySelector('.grid-container');
 
 // Starting grid size.
@@ -10,12 +6,12 @@ let gridSize = 16;
 createDiv(gridSize);
 drawing();
 
-
-
-// TODO: Clear 'divs' array every time button is hit
+// TODO: Add an eraser feature
+// TODO: Add hover animation to buttons
 
 const resize = document.getElementById('resize');
 
+// Allows user to resize the canvas.
 resize.addEventListener('click', () => {
     let gridSize = prompt('Please enter the desired width of your canvas. (16-100)');
     while (gridSize < 16 || gridSize > 100) {
@@ -34,7 +30,7 @@ random.addEventListener('click', () => {
     randomDraw();
 });
 
-// AdjustS grid size. 
+// Adjusts grid size. 
 // Creates divs and append to gridBox.
 function createDiv(gridSize) {
     for (let i = 0; i < gridSize * gridSize; i++) {
@@ -54,6 +50,7 @@ function drawing() {
     });
     }
 
+// Rainbow drawing function.
 function randomDraw() {
     const gridDivs = document.querySelectorAll('div.grid-container > div');
     gridDivs.forEach((div) => {
