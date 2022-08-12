@@ -10,12 +10,14 @@ let gridSize = 16;
 createDiv(gridSize);
 drawing();
 
+
+
 // TODO: Clear 'divs' array every time button is hit
 
 const resize = document.getElementById('resize');
 
 resize.addEventListener('click', () => {
-    let gridSize = prompt('Please enter the desired width of your canvas.');
+    let gridSize = prompt('Please enter the desired width of your canvas. (16-100)');
     while (gridSize < 16 || gridSize > 100) {
         gridSize = prompt('Please enter a number between 16 and 100.');}
     clearDivs();
@@ -26,6 +28,10 @@ resize.addEventListener('click', () => {
 
 clear.addEventListener('click', () => {
     clearCanvas();
+});
+
+random.addEventListener('click', () => {
+    randomDraw();
 });
 
 // AdjustS grid size. 
@@ -47,6 +53,21 @@ function drawing() {
         })
     });
     }
+
+function randomDraw() {
+    const gridDivs = document.querySelectorAll('div.grid-container > div');
+    gridDivs.forEach((div) => {
+        div.removeEventListener('click', () => {
+            div.style.cssText = 'background-color: black';
+        });
+        })
+
+    gridDivs.forEach((div) => {
+        div.addEventListener('mouseover', () => {
+            div.style.cssText = `background-color: ${'#' + Math.floor(Math.random()*16777215).toString(16)}`;
+        })
+    })    
+}
 
 // Clear divs.
 function clearDivs() {
