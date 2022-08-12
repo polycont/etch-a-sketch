@@ -2,19 +2,16 @@
 // based on the user's input. When the user mouses over the grid,
 // a color should be applied to any divs they mouse over.
 
-// TODO Re-add the ${} formatting to change the grid-template with CSS.
-
 const gridBox = document.querySelector('.grid-container');
 
 // Starting grid size.
 let gridSize = 16;
 
-createDiv();
+createDiv(gridSize);
 drawing();
 
 // TODO: Clear 'divs' array every time button is hit
-// TODO: Clear gridBox every time button is hit
-// When the user changes the grid size...
+
 const resize = document.getElementById('resize');
 
 resize.addEventListener('click', () => {
@@ -22,10 +19,9 @@ resize.addEventListener('click', () => {
     while (gridSize < 16 || gridSize > 100) {
         gridSize = prompt('Please enter a number between 16 and 100.');}
     clearDivs();
-    createDiv();
+    createDiv(gridSize);
     drawing();
     clearCanvas();
-    return gridSize;
 });
 
 clear.addEventListener('click', () => {
@@ -34,12 +30,12 @@ clear.addEventListener('click', () => {
 
 // AdjustS grid size. 
 // Creates divs and append to gridBox.
-function createDiv() {
-    for(let i = 0; i < gridSize * gridSize; i++){
+function createDiv(gridSize) {
+    for (let i = 0; i < gridSize * gridSize; i++) {
         let div = document.createElement('div')
-        gridBox.appendChild(div)}
-    gridBox.style.gridTemplateColumns = `repeat(100, 1fr);`;
-    gridBox.style.gridTemplateRows = `repeat(100, 1fr);`;
+        gridBox.appendChild(div);}
+    console.log(gridSize);
+    gridBox.style.cssText = `grid-template-columns: repeat(${gridSize}, 1fr); grid-template-rows: repeat(${gridSize}, 1fr)`;
     }
 
 // Function to add drawing functionality to the grid.
