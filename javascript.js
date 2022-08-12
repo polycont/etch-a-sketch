@@ -9,23 +9,6 @@ const gridBox = document.querySelector('.grid-container');
 // Starting grid size.
 let gridSize = 16;
 
-/*
-
-What is this formula? For grid-template-rows and grid-template-columns relationship.
-
-1 is what percent of number on the left. 
-
-1 = 100%
-2 = 50%
-3 = 33%
-4 = 25%
-5 = 20%
-6 = 
-10 = 10%
-100 = 1%
-
-*/
-
 createDiv();
 drawing();
 
@@ -34,31 +17,29 @@ drawing();
 // When the user changes the grid size...
 const resize = document.getElementById('resize');
 
+resize.addEventListener('click', () => {
+    let gridSize = prompt('Please enter the desired width of your canvas.');
+    while (gridSize < 16 || gridSize > 100) {
+        gridSize = prompt('Please enter a number between 16 and 100.');}
+    clearDivs();
+    createDiv();
+    drawing();
+    clearCanvas();
+    return gridSize;
+});
+
 clear.addEventListener('click', () => {
     clearCanvas();
 });
 
-resize.addEventListener('click', () => {
-    clearDivs();
-    gridSize = prompt('Please enter the desired width of your canvas.');
-    while (gridSize < 16 || gridSize > 100) {
-        gridSize = prompt('Please enter a number between 16 and 100.');
-    }
-    gridRepeat();
-    createDiv();
-    drawing();
-    clearCanvas();
-});
-
-console.log(gridSize); // Find out why this returns undefined in addition to number.
-
-// Creates a number of divs equal to user's input.
-// Append to gridBox.
+// AdjustS grid size. 
+// Creates divs and append to gridBox.
 function createDiv() {
     for(let i = 0; i < gridSize * gridSize; i++){
         let div = document.createElement('div')
-        gridBox.appendChild(div)
-    }
+        gridBox.appendChild(div)}
+    gridBox.style.gridTemplateColumns = `repeat(100, 1fr);`;
+    gridBox.style.gridTemplateRows = `repeat(100, 1fr);`;
     }
 
 // Function to add drawing functionality to the grid.
@@ -70,12 +51,6 @@ function drawing() {
         })
     });
     }
-
-// Function to create background grid size.
-function gridRepeat() {
-    gridBox.style.gridTemplateColumns = `repeat(${gridSize}, ${100 / gridSize};`;
-    gridBox.style.gridTemplateRows = `repeat(${gridSize}, ${100 / gridSize};`;
-}
 
 // Clear divs.
 function clearDivs() {
