@@ -9,22 +9,26 @@ body,
 body {
     flex-direction: column;
     margin: 0;
+    height: 100vh;
 }
 
 .main-content {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: #333533;
+    height: 95vh;
+    padding-bottom: 30px;
 }
 
 #header {
     justify-content: center;
     align-items: center;
-    background-color: #1f588e;
-    color: white;
+    background-color: #242423;
+    color: #E8EDDF;
     text-shadow: 3px 3px black;
     font-family: 'ArcadeClassic';
-    font-size: larger;
+    font-size: xx-large;
     height: 80px;
     box-shadow: 0px 5px 10px black;
 }
@@ -37,6 +41,10 @@ body {
     grid-template-rows: repeat(16, 6.25%);
     grid-template-columns: repeat(16, 6.25%);
     margin: auto 5% auto 5%;
+    border: 20px solid #F5CB5C;
+    border-radius: 20px;
+    box-shadow: 5px 10px 20px;
+    background-color: #E8EDDF;
 }
 
 .buttons {
@@ -51,4 +59,17 @@ body {
     font-family: 'Roboto';
     font-size: larger;
     padding: 10px 20px 10px 20px;
+    background-color: #CFDBD5;
+    box-shadow: none;
+    border-style: none;
+}
+
+#footer {
+    justify-content: center;
+    align-items: center;
+    font-family: 'ArcadeClassic';
+    font-size: xx-large;
+    height: 5vh;
+    background-color: #242423;
+    color: #E8EDDF;
 }
