@@ -6,6 +6,12 @@ body,
     display: flex;
 }
 
+@font-face {
+    font-family: "ArcadeClassic";
+    src: url("./fonts/arcadeclassic.ttf");
+    
+  }
+
 body {
     flex-direction: column;
     margin: 0;
